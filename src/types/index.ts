@@ -1,2 +1,3 @@
-export * as customer from "./customer";
-export * as company from "./company";
+export * from "./customer";
+export * from "./company";
+export * from "./app";

@@ -1,6 +1,7 @@
 import root from "./root.graphql";
 import { company } from "./company";
 import { customer, customerResolvers } from "./customer";
+export { default as context } from "./context";
 
 const resolvers = {
   Query: {
@@ -8,9 +9,7 @@ const resolvers = {
   },
 };
 
-const graph = {
+export const graph = {
   typeDefs: [root, company, customer],
   resolvers: resolvers,
 };
-
-export default graph;

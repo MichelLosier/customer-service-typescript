@@ -1,22 +1,15 @@
-import { customer } from "../../types";
+import { CustomerSearchResult } from "../../types/customer";
+import { AppContext } from "../../types/app";
 
 export const customerSearch = async (
   parent: any,
   args: any,
-  context: any,
+  context: AppContext,
   info: any
-): Promise<customer.CustomerSearchResult> => {
+): Promise<CustomerSearchResult> => {
+  const customers = await context.customers.getCustomers();
   const searchResult = {
-    customers: [
-      {
-        firstName: "Jim",
-        lastName: "Crispy",
-        company: {
-          name: "Crispy Co.",
-          customers: [],
-        },
-      },
-    ],
+    customers: customers,
   };
   return searchResult;
 };

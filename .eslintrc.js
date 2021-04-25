@@ -14,5 +14,8 @@ module.exports = {
       "error",
       { vars: "all", args: "none", ignoreRestSiblings: false },
     ],
+    "max-len": {
+      code: 125,
+    },
   },
 };

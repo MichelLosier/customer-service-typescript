@@ -1,6 +1,8 @@
+import dotenv from "dotenv";
+dotenv.config();
 import express from "express";
 import { ApolloServer, makeExecutableSchema } from "apollo-server-express";
-import graph from "./gql";
+import { context, graph } from "./gql";
 
 const PORT = 3000;
 
@@ -8,6 +10,7 @@ async function startApolloServer() {
   const app = express();
   const server = new ApolloServer({
     schema: makeExecutableSchema(graph),
+    context: context,
   });
 
   await server.start();
