@@ -1,28 +1,9 @@
 import dotenv from "dotenv";
 dotenv.config();
-import express from "express";
-import { ApolloServer, makeExecutableSchema } from "apollo-server-express";
-import { context, graph } from "./gql";
+import app from "./app";
 
 const PORT = 3000;
 
-async function startApolloServer() {
-  const app = express();
-  const server = new ApolloServer({
-    schema: makeExecutableSchema(graph),
-    context: context,
-  });
-
-  await server.start();
-  server.applyMiddleware({ app });
-
-  await new Promise((resolve) =>
-    app.listen({ port: PORT }, () => {
-      resolve(null);
-    })
-  );
-
+app.listen({ port: PORT }, () => {
   console.log(`Customer Service running at http://localhost:${PORT}`);
-}
-
-startApolloServer();
+});

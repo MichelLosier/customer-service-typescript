@@ -1,14 +1,28 @@
 import { Company } from "./company";
 
-export interface Customer {
+export interface BaseCustomer {
   firstName: string;
   lastName: string;
 }
 
+export interface Customer extends BaseCustomer {
+  company: Company;
+}
+
 export interface CustomerSearchResult {
-  customers: Customer[];
+  customers: BaseCustomer[];
+  errors?: CustomerSearchResultError[];
 }
 
 export interface CustomerDataSource {
-  getCustomers(): Promise<Customer[]>;
+  getCustomers(): Promise<BaseCustomer[]>;
+}
+
+export interface CustomerSearchResultError {
+  type: CustomerSearchResultErrorType;
+  message: string;
+}
+
+export enum CustomerSearchResultErrorType {
+  MAX_RECURSIVE_SELECTION_DEPTH = "MAX_RECURSIVE_SELECTION_DEPTH",
 }

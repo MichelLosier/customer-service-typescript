@@ -1,14 +1,14 @@
-import { CustomerDataSource, Customer } from "../types/customer";
+import { CustomerDataSource, BaseCustomer } from "../types/customer";
 import { DatabaseClient } from "../types/databases";
 
 export default class CustomerRepository implements CustomerDataSource {
-  private db: DatabaseClient<Customer>;
+  private db: DatabaseClient<BaseCustomer>;
 
-  constructor(db: DatabaseClient<Customer>) {
+  constructor(db: DatabaseClient<BaseCustomer>) {
     this.db = db;
   }
 
-  async getCustomers(): Promise<Customer[]> {
+  async getCustomers(): Promise<BaseCustomer[]> {
     const limit = 25;
     return await this.db.findMany({
       include: {

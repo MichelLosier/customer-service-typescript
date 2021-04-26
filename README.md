@@ -29,5 +29,5 @@ POSTGRES_PASSWORD=password
 - Run `npm install` in the project root directory
 - Run `docker-compose --env-file .env up` to bring up the database
 - Run `npx prisma migrate dev --name init` to initialize the database schema
-- Run `npx prisma db seed` to seed the database with mock data.
+- Run `npx prisma db seed --preview-feature` to seed the database with mock data.
 - Run `npm start` to bring up the service
