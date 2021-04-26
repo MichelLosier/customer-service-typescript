@@ -1,9 +1,10 @@
 import { AppContext } from "../types/app";
 import { customerDBClient } from "../databases";
-import { CustomerRepository } from "../datasources";
+import { CompanyRepository, CustomerRepository } from "../datasources";
 
 const context: AppContext = {
-  customers: new CustomerRepository(customerDBClient.customer),
+  customers: new CustomerRepository(customerDBClient),
+  companies: new CompanyRepository(customerDBClient),
 };
 
 export default context;

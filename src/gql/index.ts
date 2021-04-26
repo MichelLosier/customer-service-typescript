@@ -1,11 +1,17 @@
 import root from "./root.graphql";
-import { company } from "./company";
+import { company, companyResolvers } from "./company";
 import { customer, customerResolvers } from "./customer";
 export { default as context } from "./context";
 
 const resolvers = {
   Query: {
     searchCustomers: customerResolvers.customerSearch,
+  },
+  Customer: {
+    company: customerResolvers.customerCompany,
+  },
+  Company: {
+    customers: companyResolvers.companyCustomers,
   },
 };
 

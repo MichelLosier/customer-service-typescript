@@ -1,4 +1,5 @@
-import { CustomerSearchResult, CustomerSearchResultError, CustomerSearchResultErrorType } from "../../types/customer";
+import { CustomerSearchResult, CustomerSearchResultErrorType } from "../../types/customer";
+import { BaseCompany } from "../../types/company";
 import { AppContext } from "../../types/app";
 import { isValidMaxSelectionDepth } from "../utils/validation";
 
@@ -11,7 +12,6 @@ export const customerSearch = async (
   const maxSelectionPath = ["searchCustomers", "customers", "company", "customers", "company"];
 
   if (!isValidMaxSelectionDepth(info.fieldNodes, maxSelectionPath)) {
-    console.log("max selection violated");
     return {
       customers: [],
       errors: [
@@ -29,4 +29,14 @@ export const customerSearch = async (
   };
 
   return searchResult;
+};
+
+export const customerCompany = async (
+  parent: any,
+  args: any,
+  context: AppContext,
+  info: any
+): Promise<BaseCompany | null> => {
+  const company = await context.customers.getCustomerCompany(parent.id);
+  return company;
 };

@@ -1,4 +1,4 @@
-import { Company } from "./company";
+import { BaseCompany, Company } from "./company";
 
 export interface BaseCustomer {
   firstName: string;
@@ -16,6 +16,7 @@ export interface CustomerSearchResult {
 
 export interface CustomerDataSource {
   getCustomers(): Promise<BaseCustomer[]>;
+  getCustomerCompany(customerId: number): Promise<BaseCompany | null>;
 }
 
 export interface CustomerSearchResultError {
