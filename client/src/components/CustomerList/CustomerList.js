@@ -5,13 +5,15 @@ import CustomerListItem from "./CustomerListItem";
 
 export default class CustomerList extends React.Component {
   static propTypes = {
-    customers: PropTypes.arrayOf({
-      firstName: PropTypes.string,
-      lastName: PropTypes.string,
-      company: PropTypes.shape({
-        name: PropTypes.string,
-      }),
-    }),
+    customers: PropTypes.arrayOf(
+      PropTypes.shape({
+        firstName: PropTypes.string,
+        lastName: PropTypes.string,
+        company: PropTypes.shape({
+          name: PropTypes.string,
+        }),
+      })
+    ),
   };
 
   constructor(props) {

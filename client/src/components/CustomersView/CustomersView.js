@@ -13,21 +13,49 @@ export default class CustomersView extends React.Component {
     super(props);
     this.state = {
       customers: [],
+      errors: [],
     };
   }
 
-  componentDidMount() {
+  async componentDidMount() {
+    await this.getCustomers();
+  }
+
+  async getCustomers() {
     const { customerService } = this.props;
-    customerService.getCustomers().then((result) => {
-      const { data } = result;
-      this.setState({
-        customers: data.searchCustomers.customers,
-      });
+    let errors = [];
+
+    const result = await customerService.getCustomers().catch((error) => {
+      errors.push(error);
+    });
+
+    const queryErrors = result?.errors;
+    const searchCustomersErrors = result?.data?.searchCustomers?.errors;
+
+    if (queryErrors) {
+      errors = errors.concat(queryErrors);
+    }
+
+    if (searchCustomersErrors) {
+      errors = errors.concat(searchCustomersErrors);
+    }
+    const customers = result?.data?.searchCustomers?.customers || [];
+
+    this.setState({
+      customers: customers,
+      errors: errors,
+    });
+  }
+
+  errorMessages(errors) {
+    return errors.map((error, i) => {
+      return <div key={i}>{error.message}</div>;
     });
   }
 
   render() {
-    const { customers } = this.state;
+    const { customers, errors } = this.state;
+
     return (
       <div className="customers-view">
         <div className="customers-view__header">
@@ -36,7 +64,7 @@ export default class CustomersView extends React.Component {
           </div>
         </div>
         <div className="customers-view__content">
-          <CustomerList customers={customers} />
+          {errors?.length > 0 ? this.errorMessages(errors) : <CustomerList customers={customers} />}
         </div>
       </div>
     );

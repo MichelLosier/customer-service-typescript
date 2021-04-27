@@ -12,7 +12,7 @@ class CustomerService {
   }
 
   async getCustomers() {
-    const result = await this.client
+    const response = await this.client
       .query({
         query: SearchCustomersAndIncludeCompanyName,
       })
@@ -20,7 +20,7 @@ class CustomerService {
         console.error(`Error fetching customers: ${error.message}`);
         throw error;
       });
-    return result;
+    return response;
   }
 }
 

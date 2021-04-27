@@ -4,7 +4,9 @@
   $self: &;
   background-color: $background-grey;
 
-  height: 100%;
+  min-height: 100vh;
+  max-height: 100%;
+
   display: grid;
   grid-template-columns: [start] 10% [inner1] auto [inner2] 10% [end];
   grid-template-rows: [start] 10% [body1] auto [end];
@@ -15,7 +17,7 @@
     display: flex;
     align-items: center;
     justify-content: space-around;
-    padding: 2em 1em;
+    padding: 1em;
 
     grid-column-start: start;
     grid-column-end: end;
@@ -34,7 +36,7 @@
     display: flex;
     align-items: center;
     justify-content: space-around;
-    padding: 1em;
+    padding: 2em 0px;
 
     grid-column-start: inner1;
     grid-column-end: inner2;
