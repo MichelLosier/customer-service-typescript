@@ -1,8 +1,8 @@
 import { gql } from "@apollo/client";
 
 export const SearchCustomersAndIncludeCompanyName = gql`
-  query SearchCustomersAndIncludeCompanyNames {
-    searchCustomers {
+  query SearchCustomersAndIncludeCompanyNames($name: String) {
+    searchCustomers(criteria: { name: $name }) {
       errors {
         type
         message

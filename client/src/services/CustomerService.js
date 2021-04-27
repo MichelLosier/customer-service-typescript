@@ -11,9 +11,12 @@ class CustomerService {
     this.client = apolloClient;
   }
 
-  async getCustomers() {
+  async getCustomers(searchParams) {
     const response = await this.client
       .query({
+        variables: {
+          name: searchParams?.name || null,
+        },
         query: SearchCustomersAndIncludeCompanyName,
       })
       .catch((error) => {
