@@ -36,3 +36,12 @@ export const searchCustomersFullDepth = `query {
     }
   }
 }`;
+
+export const searchCustomersByName = `query($name: String!) {
+  searchCustomers(criteria: {name: $name}) {
+    customers {
+      firstName
+      lastName
+    }
+  }
+}`;
