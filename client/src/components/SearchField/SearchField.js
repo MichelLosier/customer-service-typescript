@@ -6,7 +6,6 @@ export default class SearchField extends React.Component {
     value: PropTypes.string,
     onChange: PropTypes.func,
     placeHolderText: PropTypes.string,
-    label: PropTypes.string,
   };
 
   constructor(props) {
@@ -18,7 +17,6 @@ export default class SearchField extends React.Component {
 
     return (
       <div className="search-field">
-        <label>{label}</label>
         <input
           type="text"
           placeholder={placeHolderText}

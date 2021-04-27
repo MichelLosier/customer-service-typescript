@@ -4,10 +4,14 @@ import PropTypes from "prop-types";
 import CustomerList from "../CustomerList";
 import SearchField from "../SearchField";
 
+import { debounce } from "../../utils";
+
 export default class CustomersView extends React.Component {
   static propTypes = {
     customerService: PropTypes.shape({
       getCustomers: PropTypes.func,
+      location: PropTypes.object,
+      history: PropTypes.object,
     }),
   };
   constructor(props) {
@@ -18,6 +22,7 @@ export default class CustomersView extends React.Component {
     };
 
     this.handleSearchChange = this.handleSearchChange.bind(this);
+    this.getCustomers = debounce(this.getCustomers.bind(this), 1000);
   }
 
   async componentDidMount() {
@@ -25,6 +30,7 @@ export default class CustomersView extends React.Component {
   }
 
   async getCustomers() {
+    console.log("Hello");
     const { customerService } = this.props;
     let errors = [];
 
@@ -66,6 +72,7 @@ export default class CustomersView extends React.Component {
     const newLocationString = `${window.location.pathname}?${newParamString}`;
 
     history.push(newLocationString);
+    this.getCustomers();
   }
 
   render() {
