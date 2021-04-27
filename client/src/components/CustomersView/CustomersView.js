@@ -2,6 +2,7 @@ import React from "react";
 import PropTypes from "prop-types";
 
 import CustomerList from "../CustomerList";
+import SearchField from "../SearchField";
 
 export default class CustomersView extends React.Component {
   static propTypes = {
@@ -15,6 +16,8 @@ export default class CustomersView extends React.Component {
       customers: [],
       errors: [],
     };
+
+    this.handleSearchChange = this.handleSearchChange.bind(this);
   }
 
   async componentDidMount() {
@@ -53,8 +56,23 @@ export default class CustomersView extends React.Component {
     });
   }
 
+  handleSearchChange(evt) {
+    const { location, history } = this.props;
+    const searchParams = new URLSearchParams(location.search);
+
+    searchParams.set("search", evt.target.value);
+
+    const newParamString = searchParams.toString();
+    const newLocationString = `${window.location.pathname}?${newParamString}`;
+
+    history.push(newLocationString);
+  }
+
   render() {
     const { customers, errors } = this.state;
+    const { location } = this.props;
+    const searchParams = new URLSearchParams(location.search);
+    const nameSearchTerm = searchParams.get("search");
 
     return (
       <div className="customers-view">
@@ -62,6 +80,12 @@ export default class CustomersView extends React.Component {
           <div className="customers-view__title">
             <h1>Customers</h1>
           </div>
+          <SearchField
+            value={nameSearchTerm}
+            placeHolderText="Search customers by first or last name"
+            label="Name Search"
+            onChange={this.handleSearchChange}
+          />
         </div>
         <div className="customers-view__content">
           {errors?.length > 0 ? this.errorMessages(errors) : <CustomerList customers={customers} />}

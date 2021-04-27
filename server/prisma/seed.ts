@@ -1,7 +1,6 @@
 import { PrismaClient } from "@prisma/client";
 import faker from "faker";
 import { mockCompanyNames, mockCustomers } from "../src/tests/mocks";
-import { BaseCustomer } from "../src/types/customer";
 
 const prisma = new PrismaClient();
 
