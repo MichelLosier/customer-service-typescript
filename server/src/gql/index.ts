@@ -5,7 +5,7 @@ export { default as context } from "./context";
 
 const resolvers = {
   Query: {
-    searchCustomers: customerResolvers.customerSearch,
+    searchCustomers: customerResolvers.searchCustomers,
   },
   Customer: {
     company: customerResolvers.customerCompany,

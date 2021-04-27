@@ -14,8 +14,16 @@ export interface CustomerSearchResult {
   errors?: CustomerSearchResultError[];
 }
 
+export interface SearchCustomersArgs {
+  criteria: CustomerSearchCriteria;
+}
+
+export interface CustomerSearchCriteria {
+  name?: string;
+}
+
 export interface CustomerDataSource {
-  getCustomers(): Promise<BaseCustomer[]>;
+  getCustomers(criteria?: CustomerSearchCriteria): Promise<BaseCustomer[]>;
   getCustomerCompany(customerId: number): Promise<BaseCompany | null>;
 }
 
