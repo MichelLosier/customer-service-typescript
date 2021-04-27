@@ -1,5 +1,5 @@
-import { CustomerDataSource } from "../types/customer";
-import { CompanyDataSource } from "../types/company";
+import { CustomerDataSource } from "./customer";
+import { CompanyDataSource } from "./company";
 
 export interface AppConfig {
   CUSTOMER_DB_ENDPOINT: string;

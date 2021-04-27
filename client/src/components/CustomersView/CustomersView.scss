@@ -1,0 +1,46 @@
+@import "../../sass/variables.scss";
+
+.customers-view {
+  $self: &;
+  background-color: $background-grey;
+
+  min-height: 100vh;
+  max-height: 100%;
+
+  display: grid;
+  grid-template-columns: [start] 10% [inner1] auto [inner2] 10% [end];
+  grid-template-rows: [start] 10% [body1] auto [end];
+
+  &__header {
+    background-color: white;
+
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+    padding: 1em;
+
+    grid-column-start: start;
+    grid-column-end: end;
+    grid-row-start: start;
+    grid-row-end: body1;
+
+    border-bottom: 1px solid $background-grey;
+    box-shadow: 0px 5px 10px 5px rgba(0, 0, 0, 0.1);
+
+    #{$self}__title {
+      color: $interface-text-color;
+    }
+  }
+
+  &__content {
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+    padding: 2em 0px;
+
+    grid-column-start: inner1;
+    grid-column-end: inner2;
+    grid-row-start: body1;
+    grid-row-end: end;
+  }
+}
