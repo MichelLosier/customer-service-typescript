@@ -19,12 +19,39 @@
     border: 1px solid $background-grey;
     border-top: none;
 
-    display: flex;
-    justify-content: flex-start;
-    align-items: center;
+    display: grid;
+    grid-template-columns: [start] auto [middle] 50% [end];
 
     &:first-child {
       border-top: 1px solid $background-grey;
+    }
+
+    &-field {
+      display: flex;
+      justify-content: flex-start;
+      align-items: center;
+
+      &.name {
+        grid-column-start: start;
+        grid-column-end: middle;
+      }
+
+      &.company {
+        grid-column-start: middle;
+        grid-column-end: end;
+        .value {
+          overflow: hidden;
+          text-overflow: ellipsis;
+        }
+      }
+      .label {
+        font-size: 0.75em;
+      }
+      .value {
+        font-size: 0.85em;
+        padding-left: 1em;
+        color: $content-text-color;
+      }
     }
   }
 }

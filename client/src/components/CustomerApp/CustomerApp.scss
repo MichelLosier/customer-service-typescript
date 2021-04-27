@@ -1,4 +1,7 @@
+@import "../../sass/variables.scss";
+
 .customer-app {
-  color: grey;
+  color: $interface-text-color;
   height: 100%;
+  font-size: 12;
 }

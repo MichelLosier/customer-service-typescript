@@ -1,6 +1,8 @@
 import React from "react";
 import PropTypes from "prop-types";
 
+import CustomerListItem from "./CustomerListItem";
+
 export default class CustomerList extends React.Component {
   static propTypes = {
     customers: PropTypes.arrayOf({
@@ -18,13 +20,7 @@ export default class CustomerList extends React.Component {
 
   customerListItems(customers) {
     return customers.map((customer, i) => {
-      return (
-        <div key={i} className="customer-list__item">
-          <div>{customer.firstName}</div>
-          <div>{customer.lastName}</div>
-          <div>{customer.company.name}</div>
-        </div>
-      );
+      return <CustomerListItem customer={customer} key={i} />;
     });
   }
 
