@@ -1,4 +1,5 @@
 import { BaseCompany, Company } from "./company";
+import { QueryError } from "./graphql";
 
 export interface BaseCustomer {
   firstName: string;
@@ -11,7 +12,7 @@ export interface Customer extends BaseCustomer {
 
 export interface CustomerSearchResult {
   customers: BaseCustomer[];
-  errors?: CustomerSearchResultError[];
+  errors?: QueryError[];
 }
 
 export interface SearchCustomersArgs {
@@ -25,13 +26,4 @@ export interface CustomerSearchCriteria {
 export interface CustomerDataSource {
   getCustomers(criteria?: CustomerSearchCriteria): Promise<BaseCustomer[]>;
   getCustomerCompany(customerId: number): Promise<BaseCompany | null>;
-}
-
-export interface CustomerSearchResultError {
-  type: CustomerSearchResultErrorType;
-  message: string;
-}
-
-export enum CustomerSearchResultErrorType {
-  MAX_RECURSIVE_SELECTION_DEPTH = "MAX_RECURSIVE_SELECTION_DEPTH",
 }

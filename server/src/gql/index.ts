@@ -6,12 +6,16 @@ export { default as context } from "./context";
 const resolvers = {
   Query: {
     searchCustomers: customerResolvers.searchCustomers,
+    getAllCompanies: companyResolvers.getAllCompanies,
   },
   Customer: {
     company: customerResolvers.customerCompany,
   },
   Company: {
     customers: companyResolvers.companyCustomers,
+  },
+  QueryError: {
+    __resolveType: () => "BasicQueryError", // false is temporary until a type actually extends from this interface
   },
 };
 

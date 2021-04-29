@@ -15,20 +15,7 @@ const customer = gql`
   type CustomerSearchResult {
     "The customers"
     customers: [Customer]
-    errors: [CustomerSearchResultError]
-  }
-
-  "Represents an error from a customer search"
-  type CustomerSearchResultError {
-    "The type of error encountered"
-    type: CustomerSearchResultErrorType!
-    "Message with additional detail on the error"
-    message: String!
-  }
-
-  "Enumerates the error types from a customer search"
-  enum CustomerSearchResultErrorType {
-    MAX_RECURSIVE_SELECTION_DEPTH
+    errors: [QueryError]
   }
 
   input CustomerSearchCriteria {

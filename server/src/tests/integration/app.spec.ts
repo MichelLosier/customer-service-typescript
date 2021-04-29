@@ -1,7 +1,8 @@
 import app from "../../app";
 import supertest from "supertest";
 import queries from "./queries";
-import { Customer, CustomerSearchResultErrorType } from "../../types/customer";
+import { Customer } from "../../types/customer";
+import { QueryErrorType } from "../../types";
 
 describe("/graphql: searchCustomers", () => {
   it("should provide a list of 25 customers", async () => {
@@ -43,7 +44,7 @@ describe("/graphql: searchCustomers", () => {
 
     customers.forEach((customer: Customer) => {
       expect(customers.length).toBe(0);
-      expect(errors[0].type).toBe(CustomerSearchResultErrorType.MAX_RECURSIVE_SELECTION_DEPTH);
+      expect(errors[0].type).toBe(QueryErrorType.MAX_RECURSIVE_SELECTION_DEPTH);
     });
   });
 

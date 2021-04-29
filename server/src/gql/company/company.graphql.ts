@@ -8,6 +8,12 @@ const company = gql`
     "Collection of customers associated with the company"
     customers: [Customer]
   }
+
+  "Represents the result of a get all companies query"
+  type GetAllCompaniesResult {
+    companies: [Company]
+    errors: [QueryError]
+  }
 `;
 
 export default company;
