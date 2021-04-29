@@ -13,14 +13,15 @@ export default class SearchField extends React.Component {
   }
 
   render() {
-    const { label, placeHolderText, value, onChange } = this.props;
+    const { placeHolderText, value, onChange } = this.props;
 
     return (
       <div className="search-field">
         <input
           type="text"
+          role="searchbox"
           placeholder={placeHolderText}
-          value={value}
+          value={value || ""}
           onChange={(evt) => {
             onChange(evt);
           }}

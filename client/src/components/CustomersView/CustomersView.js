@@ -10,9 +10,9 @@ export default class CustomersView extends React.Component {
   static propTypes = {
     customerService: PropTypes.shape({
       getCustomers: PropTypes.func,
-      location: PropTypes.object,
-      history: PropTypes.object,
     }),
+    history: PropTypes.object,
+    location: PropTypes.object,
   };
   constructor(props) {
     super(props);
@@ -32,6 +32,10 @@ export default class CustomersView extends React.Component {
     await this.getCustomers({
       name: searchParams.get("search"),
     });
+  }
+
+  componentWillUnmount() {
+    this.setState = () => {};
   }
 
   async getCustomers(searchParams) {
@@ -71,13 +75,13 @@ export default class CustomersView extends React.Component {
   }
 
   handleSearchChange(evt) {
-    const { location, history } = this.props;
-    const searchParams = new URLSearchParams(location.search);
+    const { history, location } = this.props;
+    const searchParams = new URLSearchParams(history.location.search);
 
     searchParams.set("search", evt.target.value);
 
     const newParamString = searchParams.toString();
-    const newLocationString = `${window.location.pathname}?${newParamString}`;
+    const newLocationString = `${location.pathname}?${newParamString}`;
 
     history.push(newLocationString);
     this.getCustomers({

@@ -22,8 +22,8 @@ export default class CustomerApp extends React.Component {
             </Route>
             <Route
               path="/customers"
-              render={({ location, history }) => {
-                return <CustomersView customerService={customerService} location={location} history={history} />;
+              render={({ history, location }) => {
+                return <CustomersView customerService={customerService} history={history} location={location} />;
               }}
             />
           </Switch>
