@@ -1,11 +1,11 @@
-import { CustomerSearchResult, CustomerSearchResultErrorType } from "../../types/customer";
+import { CustomerSearchResult, CustomerSearchResultErrorType, SearchCustomersArgs } from "../../types/customer";
 import { BaseCompany } from "../../types/company";
 import { AppContext } from "../../types/app";
 import { isValidMaxSelectionDepth } from "../utils/validation";
 
-export const customerSearch = async (
+export const searchCustomers = async (
   parent: any,
-  args: any,
+  args: SearchCustomersArgs,
   context: AppContext,
   info: any
 ): Promise<CustomerSearchResult> => {
@@ -23,7 +23,7 @@ export const customerSearch = async (
     };
   }
 
-  const customers = await context.customers.getCustomers();
+  const customers = await context.customers.getCustomers(args.criteria);
   const searchResult = {
     customers: customers,
   };

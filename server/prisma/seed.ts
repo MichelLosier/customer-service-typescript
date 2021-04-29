@@ -1,20 +1,8 @@
 import { PrismaClient } from "@prisma/client";
 import faker from "faker";
+import { mockCompanyNames, mockCustomers } from "../src/tests/mocks";
 
 const prisma = new PrismaClient();
-
-const mockCompanyNames = [
-  "Door Knobs Inc.",
-  "Fantastic Plants Ltd.",
-  "Amalgamated Puppy Treats",
-  "Luxury Kitty Campers Inc.",
-  "AAA Marbles",
-  "Crispy Snacks and Soft Drinks Co.",
-  "Zippy Automotive",
-  "LightCity Manufacturing",
-  "Bitmetric Labs",
-  "Microdynamics",
-];
 
 const getRandom = (arr: any[]) => {
   const index = Math.floor(Math.random() * arr.length);
@@ -34,7 +22,12 @@ async function main() {
     })
   );
 
-  const customers = [];
+  const mockCustomersWithCompanies = mockCustomers.map((mockCustomer: any) => {
+    mockCustomer.companyId = getRandom(companies).id;
+    return mockCustomer;
+  });
+
+  const customers = [...mockCustomersWithCompanies];
   for (let i = 0; i < 1000; i++) {
     customers.push({
       firstName: faker.name.firstName(),

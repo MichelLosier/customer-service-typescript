@@ -30,6 +30,11 @@ const customer = gql`
   enum CustomerSearchResultErrorType {
     MAX_RECURSIVE_SELECTION_DEPTH
   }
+
+  input CustomerSearchCriteria {
+    "Partial match to first or last name"
+    name: String
+  }
 `;
 
 export default customer;
