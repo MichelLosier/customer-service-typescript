@@ -26,7 +26,7 @@ export interface CustomerSearchCriteria {
 }
 
 export interface CustomerSearchCriteriaFilter {
-  companyId?: string;
+  companyName?: string;
 }
 
 export interface CustomerDataSource {

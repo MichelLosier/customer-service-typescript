@@ -46,10 +46,10 @@ export const searchCustomersByName = `query($name: String!) {
   }
 }`;
 
-export const searchCustomersFilteredByCompany = `query($companyId: ID!) {
+export const searchCustomersFilteredByCompany = `query($companyName: String!) {
   searchCustomers( criteria: { 
       filter: { 
-        companyId: $companyId
+        companyName: $companyName
       } 
     }
   ) 
@@ -65,11 +65,11 @@ export const searchCustomersFilteredByCompany = `query($companyId: ID!) {
   }
 }`;
 
-export const searchCustomersByNameAndFilteredByCompany = `query($name: String!, $companyId: ID!) {
+export const searchCustomersByNameAndFilteredByCompany = `query($name: String!, $companyName: String!) {
   searchCustomers( criteria: { 
       name: $name
       filter: { 
-        companyId: $companyId
+        companyName: $companyName
       } 
     }
   ) 

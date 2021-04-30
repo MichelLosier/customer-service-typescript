@@ -78,10 +78,10 @@ describe("/graphql: searchCustomers", () => {
 
     const mockCompany = companiesResponse.body.data.getAllCompanies.companies[0];
 
-    const companyId = mockCompany.id;
+    const companyName = mockCompany.name;
     const payload = {
       variables: {
-        companyId: companyId,
+        companyName: companyName,
       },
       query: queries.searchCustomers.searchCustomersFilteredByCompany,
     };
@@ -93,7 +93,8 @@ describe("/graphql: searchCustomers", () => {
     const { customers } = response.body.data.searchCustomers;
 
     customers.forEach((customer: Customer) => {
-      expect(customer.company.id).toBe(companyId);
+      const matchingCompany = customer.company.name.toLowerCase().includes(companyName.toLowerCase());
+      expect(matchingCompany).toBe(true);
     });
   });
 
@@ -107,11 +108,11 @@ describe("/graphql: searchCustomers", () => {
     const mockCompany = companiesResponse.body.data.getAllCompanies.companies[0];
     const nameSearch = mockCompany.customers[0].firstName.slice(3);
 
-    const companyId = mockCompany.id;
+    const companyName = mockCompany.name;
     const payload = {
       variables: {
         name: nameSearch,
-        companyId: companyId,
+        companyName: companyName,
       },
       query: queries.searchCustomers.searchCustomersByNameAndFilteredByCompany,
     };
@@ -123,7 +124,9 @@ describe("/graphql: searchCustomers", () => {
     const { customers } = response.body.data.searchCustomers;
 
     customers.forEach((customer: Customer) => {
-      expect(customer.company.id).toBe(companyId);
+      const matchingCompany = customer.company.name.toLowerCase().includes(companyName.toLowerCase());
+      expect(matchingCompany).toBe(true);
+
       const matchingName =
         customer.firstName.toLowerCase().includes(nameSearch) || customer.lastName.toLowerCase().includes(nameSearch);
       expect(matchingName).toBe(true);

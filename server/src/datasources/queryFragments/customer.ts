@@ -17,11 +17,16 @@ export const nameMatchCondition = (name: string) => {
   };
 };
 
-export const filterCondition = (companyId: number) => {
+export const filterCondition = (companyName: string) => {
   return {
     AND: [
       {
-        companyId: companyId,
+        company: {
+          name: {
+            contains: companyName,
+            mode: "insensitive",
+          },
+        },
       },
     ],
   };

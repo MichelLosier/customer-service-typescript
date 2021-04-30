@@ -24,8 +24,8 @@ export default class CustomerRepository implements CustomerDataSource {
       Object.assign(query.where, nameMatchCondition(criteria.name));
     }
 
-    if (criteria?.filter?.companyId) {
-      Object.assign(query.where, filterCondition(parseInt(criteria.filter.companyId)));
+    if (criteria?.filter?.companyName) {
+      Object.assign(query.where, filterCondition(criteria.filter.companyName));
     }
 
     return await this.db.customer.findMany(query);

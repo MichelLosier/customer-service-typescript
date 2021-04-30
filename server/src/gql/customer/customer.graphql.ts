@@ -30,8 +30,8 @@ const customer = gql`
 
   "Represents the criteria to filter by in a customer search"
   input CustomerSearchCriteriaFilter {
-    "Filter customers to only those associated with the companyId"
-    companyId: ID
+    "Filter customers to only those associated with the company name"
+    companyName: String
   }
 `;
 
