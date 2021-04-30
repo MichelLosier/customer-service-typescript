@@ -45,3 +45,42 @@ export const searchCustomersByName = `query($name: String!) {
     }
   }
 }`;
+
+export const searchCustomersFilteredByCompany = `query($companyId: ID!) {
+  searchCustomers( criteria: { 
+      filter: { 
+        companyId: $companyId
+      } 
+    }
+  ) 
+  {
+    customers {
+      firstName
+      lastName
+      company {
+        id
+        name
+      }
+    }
+  }
+}`;
+
+export const searchCustomersByNameAndFilteredByCompany = `query($name: String!, $companyId: ID!) {
+  searchCustomers( criteria: { 
+      name: $name
+      filter: { 
+        companyId: $companyId
+      } 
+    }
+  ) 
+  {
+    customers {
+      firstName
+      lastName
+      company {
+        id
+        name
+      }
+    }
+  }
+}`;

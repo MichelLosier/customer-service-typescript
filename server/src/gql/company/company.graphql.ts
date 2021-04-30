@@ -3,6 +3,8 @@ import { gql } from "apollo-server";
 const company = gql`
   "Represents a company customers can be associated with"
   type Company {
+    "The id of the company"
+    id: ID!
     "Represents the name of the company"
     name: String!
     "Collection of customers associated with the company"

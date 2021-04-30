@@ -2,6 +2,7 @@ import { BaseCustomer, Customer } from "./customer";
 import { QueryError } from "./graphql";
 
 export interface BaseCompany {
+  id: number;
   name: string;
 }
 

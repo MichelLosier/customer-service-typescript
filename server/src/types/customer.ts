@@ -2,6 +2,7 @@ import { BaseCompany, Company } from "./company";
 import { QueryError } from "./graphql";
 
 export interface BaseCustomer {
+  id: number;
   firstName: string;
   lastName: string;
 }
@@ -21,6 +22,11 @@ export interface SearchCustomersArgs {
 
 export interface CustomerSearchCriteria {
   name?: string;
+  filter?: CustomerSearchCriteriaFilter;
+}
+
+export interface CustomerSearchCriteriaFilter {
+  companyId?: string;
 }
 
 export interface CustomerDataSource {

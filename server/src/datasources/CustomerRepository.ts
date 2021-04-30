@@ -2,6 +2,8 @@ import { CustomerDataSource, BaseCustomer, CustomerSearchCriteria } from "../typ
 import { BaseCompany } from "../types/company";
 import { PrismaClient } from "@prisma/client";
 
+import queryFragments from "./queryFragments";
+
 export default class CustomerRepository implements CustomerDataSource {
   private db: PrismaClient;
 
@@ -10,34 +12,20 @@ export default class CustomerRepository implements CustomerDataSource {
   }
 
   async getCustomers(criteria?: CustomerSearchCriteria): Promise<BaseCustomer[]> {
-    const limit = 25;
+    let defaultLimit = 25;
+    const { nameMatchCondition, filterCondition } = queryFragments.customer;
 
     const query: any = {
       where: {},
-      take: limit,
-    };
-
-    const nameMatchCondition = (name: string) => {
-      return {
-        OR: [
-          {
-            firstName: {
-              contains: name,
-              mode: "insensitive",
-            },
-          },
-          {
-            lastName: {
-              contains: name,
-              mode: "insensitive",
-            },
-          },
-        ],
-      };
+      take: defaultLimit,
     };
 
     if (criteria?.name) {
       Object.assign(query.where, nameMatchCondition(criteria.name));
+    }
+
+    if (criteria?.filter?.companyId) {
+      Object.assign(query.where, filterCondition(parseInt(criteria.filter.companyId)));
     }
 
     return await this.db.customer.findMany(query);
