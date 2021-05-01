@@ -17,6 +17,6 @@ This service provides a graphql interface for retrieving customer information, a
   - Client offers easeful strategies for n+1 avoidance in graph based queries
   - Has utilties for migrations and seeding
 
-  ## Setup
+## Setup
 
-  Use the yarn commands in the project root.
+Use the yarn commands in the project root.

@@ -4,13 +4,13 @@
 
 This project includes both the service application and client app for retrieving customer information.
 
-- [Customer Service (server)]("packages/server/README.md)
-- [Client app]("packages/client/README.md)
+- [Customer Service (server)](packages/server/README.md)
+- [Client app](packages/client/README.md)
 
 ## Technologies
 
-- [Customer Service technologies]("packages/server/README.md#Technologies)
-- [Client app technologies]("packages/client/README.md#Technologies")
+- [Customer Service technologies](packages/server/README.md#Technologies)
+- [Client app technologies](packages/client/README.md#Technologies")
 - [Docker](https://docs.docker.com/compose/) - Docker Compose is used to bring up our database.
 
 ## Structure
