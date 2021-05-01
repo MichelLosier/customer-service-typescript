@@ -1,0 +1,30 @@
+@import "../../sass/variables.scss";
+
+.filter-selection {
+  position: relative;
+  width: 250px;
+
+  &,
+  .selection-items {
+    background-color: white;
+    cursor: pointer;
+  }
+
+  .selection-item,
+  .selected-item {
+    padding: 0.5em;
+    border: 1px solid $background-grey;
+    border-top: none;
+    min-height: 1em;
+  }
+
+  .selected-item {
+    border-top: 1px solid $background-grey;
+  }
+
+  .selection-items {
+    position: absolute;
+    max-height: 300px;
+    overflow: scroll;
+  }
+}

@@ -3,6 +3,8 @@ import { gql } from "apollo-server";
 const customer = gql`
   "Represents a customer"
   type Customer {
+    "The id of the customer"
+    id: ID!
     "Represents a customer first name"
     firstName: String!
     "Represents a customer last name"
@@ -13,27 +15,23 @@ const customer = gql`
 
   "Represents the result of a customer search"
   type CustomerSearchResult {
-    "The customers"
+    "The customers found from a search result"
     customers: [Customer]
-    errors: [CustomerSearchResultError]
-  }
-
-  "Represents an error from a customer search"
-  type CustomerSearchResultError {
-    "The type of error encountered"
-    type: CustomerSearchResultErrorType!
-    "Message with additional detail on the error"
-    message: String!
-  }
-
-  "Enumerates the error types from a customer search"
-  enum CustomerSearchResultErrorType {
-    MAX_RECURSIVE_SELECTION_DEPTH
+    "The known errors producted in the search query"
+    errors: [QueryError]
   }
 
   input CustomerSearchCriteria {
-    "Partial match to first or last name"
+    "Partial match to customer first or last name"
     name: String
+    "Additional Criteria to filter by"
+    filter: CustomerSearchCriteriaFilter
+  }
+
+  "Represents the criteria to filter by in a customer search"
+  input CustomerSearchCriteriaFilter {
+    "Filter customers to only those associated with the company name"
+    companyName: String
   }
 `;
 

@@ -16,6 +16,7 @@ class CustomerService {
       .query({
         variables: {
           name: searchParams?.name || null,
+          companyName: searchParams?.companyName || null,
         },
         query: SearchCustomersAndIncludeCompanyName,
       })

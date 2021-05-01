@@ -1,7 +1,8 @@
-import { CustomerSearchResult, CustomerSearchResultErrorType, SearchCustomersArgs } from "../../types/customer";
+import { CustomerSearchResult, SearchCustomersArgs } from "../../types/customer";
 import { BaseCompany } from "../../types/company";
 import { AppContext } from "../../types/app";
 import { isValidMaxSelectionDepth } from "../utils/validation";
+import { QueryErrorType } from "../../types";
 
 export const searchCustomers = async (
   parent: any,
@@ -16,7 +17,7 @@ export const searchCustomers = async (
       customers: [],
       errors: [
         {
-          type: CustomerSearchResultErrorType.MAX_RECURSIVE_SELECTION_DEPTH,
+          type: QueryErrorType.MAX_RECURSIVE_SELECTION_DEPTH,
           message: "Max recursive selection reached. Modify your query to reduce unneccessary recursion.",
         },
       ],

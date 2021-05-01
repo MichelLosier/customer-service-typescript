@@ -23,7 +23,7 @@ export default class SearchField extends React.Component {
           placeholder={placeHolderText}
           value={value || ""}
           onChange={(evt) => {
-            onChange(evt);
+            onChange(evt.target.value);
           }}
         />
       </div>

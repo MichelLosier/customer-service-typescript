@@ -1,4 +1,4 @@
-import { CompanyDataSource } from "../types/company";
+import { CompanyDataSource, BaseCompany } from "../types/company";
 import { BaseCustomer } from "../types/customer";
 import { PrismaClient } from "@prisma/client";
 
@@ -16,5 +16,13 @@ export default class CompanyRepository implements CompanyDataSource {
         where: { id: companyId || undefined },
       })
       .customers();
+  }
+
+  async getCompanies(): Promise<BaseCompany[]> {
+    return this.db.company.findMany({
+      orderBy: {
+        name: "desc",
+      },
+    });
   }
 }
