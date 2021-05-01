@@ -12,7 +12,9 @@
     "server-test": "yarn workspace customer-service test",
     "client-build": "yarn workspace client build",
     "db-migrate": "yarn workspace customer-service db-migrate",
-    "db-seed": "yarn workspace customer-service db-seed"
+    "db-seed": "yarn workspace customer-service db-seed",
+    "db-up": "yarn workspace customer-service db-up",
+    "db-down": "yarn workspace customer-service db-down"
   },
   "repository": {
     "type": "git",
