@@ -1,0 +1,23 @@
+{
+  "private": true,
+  "name": "customer-service-repo",
+  "version": "1.0.0",
+  "workspaces": [
+    "packages/*"
+  ],
+  "scripts": {
+    "client-start": "yarn workspace client start",
+    "server-start": "yarn workspace customer-service start",
+    "client-test": "yarn workspace client test",
+    "server-test": "yarn workspace customer-service test",
+    "client-build": "yarn workspace client build",
+    "db-migrate": "yarn workspace customer-service db-migrate",
+    "db-seed": "yarn workspace customer-service db-seed"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git@source.datanerd.us:mlosier/customer-service.git"
+  },
+  "author": "",
+  "license": "ISC"
+}
