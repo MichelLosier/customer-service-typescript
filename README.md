@@ -30,12 +30,14 @@ POSTGRES_PASSWORD=password
 The following commands can be used to bring up different components of the project:
 
 - `yarn install` in the project root directory
-- `yarn db-up` to bring up the database
+- `yarn db-up` to bring up the database (wraps docker-compose up).
 - `yarn db-migrate` to initialize the database schema
 - `yarn db-seed` to seed the database with mock data.
 - (optional) `yarn client build` to create a production build of the client app. Recommend just using development server launched with `client-start`
 - `yarn server-start` to bring up the server
 - `yarn client-start` to bring up the client web app
+
+These yarn commands wrap other CLI commands for convenience. The actual commands can be found in the respective client and server packages package.json scripts and are aliased in the root project package.json.
 
 ## Tests
 
@@ -44,7 +46,7 @@ The following commands can be used to bring up different components of the proje
 
 ## Use
 
-The client app development server will run on `localhost:3000`. Builds
+The client app development server will run on `localhost:3000`.
 
 The server is available on `localhost:6001`.
 
