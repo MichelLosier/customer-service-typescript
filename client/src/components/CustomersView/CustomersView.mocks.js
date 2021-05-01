@@ -23,8 +23,20 @@ export const mockCustomers = [
   },
 ];
 
+export const mockCompanies = [
+  {
+    name: "Puppy Co.",
+  },
+  {
+    name: "Kitty Co.",
+  },
+];
+
 export const mockGetCustomersResponse = {
   data: {
+    getAllCompanies: {
+      companies: [...mockCompanies],
+    },
     searchCustomers: {
       customers: [...mockCustomers],
       errors: null,
@@ -39,6 +51,9 @@ export const mockGetCustomersResponseWithQueryError = {
 
 export const mockGetCustomersResponseWithSearchError = {
   data: {
+    getAllCompanies: {
+      companies: [...mockCompanies],
+    },
     searchCustomers: {
       customers: [],
       errors: [{ message: "Something bad happened with the search" }],

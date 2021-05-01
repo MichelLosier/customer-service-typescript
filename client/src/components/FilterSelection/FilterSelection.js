@@ -27,8 +27,9 @@ export default class FilterSelection extends React.Component {
     return options.map((option, i) => {
       return (
         <div
+          role="listitem"
+          aria-label={option.name}
           className={"selection-item"}
-          value={option.value}
           key={`${i}-${option.value}`}
           onClick={() => this.handleItemClick(option.value)}
         >
@@ -78,11 +79,18 @@ export default class FilterSelection extends React.Component {
     const selectedOption = this.findSelectedOption(selectedValue, defaultValue, options);
 
     return (
-      <div className="filter-selection">
-        <div className="selected-item" onClick={this.handleSelectedItemClick}>
+      <div className="filter-selection" role="listbox">
+        <div
+          role="listitem"
+          className="selected-item"
+          onClick={this.handleSelectedItemClick}
+          aria-label={`Selected company: ${selectedOption.name}`}
+        >
           {selectedOption.name}
         </div>
-        <div className="selection-items">{!collapsed && this.optionsList(options)}</div>
+        <div role="list" className="selection-items">
+          {!collapsed && this.optionsList(options)}
+        </div>
       </div>
     );
   }
