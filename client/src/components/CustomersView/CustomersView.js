@@ -134,18 +134,24 @@ export default class CustomersView extends React.Component {
           <div className="customers-view__title">
             <h1>Customers</h1>
           </div>
-          <SearchField
-            value={nameSearchTerm}
-            placeHolderText="Search customers by first or last name"
-            label="Name Search"
-            onChange={this.handleSearchChange}
-          />
-          <FilterSelection
-            onChange={this.handleCompanyFilterChange}
-            defaultValue={""}
-            selectedValue={companyFilter}
-            options={this.filterOptions(companies)}
-          />
+          <div className="search-control">
+            <label>Search by company name:</label>
+            <SearchField
+              value={nameSearchTerm}
+              placeHolderText="Search customers by first or last name"
+              label="Name Search"
+              onChange={this.handleSearchChange}
+            />
+          </div>
+          <div className="search-control">
+            <label>Filter by company: </label>
+            <FilterSelection
+              onChange={this.handleCompanyFilterChange}
+              defaultValue={""}
+              selectedValue={companyFilter}
+              options={this.filterOptions(companies)}
+            />
+          </div>
         </div>
         <div className="customers-view__content">
           {customers?.length == 0 && !loading && <div>No customers found matching this criteria.</div>}

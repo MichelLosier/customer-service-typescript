@@ -2,13 +2,12 @@
 
 .filter-selection {
   position: relative;
-  max-width: 250px;
+  width: 250px;
 
   &,
   .selection-items {
     background-color: white;
     cursor: pointer;
-    width: 100%;
   }
 
   .selection-item,

@@ -8,7 +8,12 @@
 
   display: grid;
   grid-template-columns: [start] 10% [inner1] auto [inner2] 10% [end];
-  grid-template-rows: [start] 10% [body1] 90% [end];
+  grid-template-rows: [start] 12% [body1] 90% [end];
+
+  label {
+    font-size: $label-font-size;
+    padding: 0.5em 0;
+  }
 
   &__header {
     background-color: white;
@@ -28,6 +33,11 @@
 
     #{$self}__title {
       color: $interface-text-color;
+    }
+
+    .search-control {
+      display: flex;
+      flex-direction: column;
     }
   }
 
