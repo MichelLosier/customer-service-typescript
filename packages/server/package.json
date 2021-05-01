@@ -6,7 +6,11 @@
   "scripts": {
     "start": "tsc && node dist/src/server.js",
     "test": "tsc && jest",
-    "lint": "eslint '*/**/*.{js,ts,tsx}' --quiet --fix"
+    "lint": "eslint '*/**/*.{js,ts,tsx}' --quiet --fix",
+    "db-up": "docker-compose --env-file ./packages/server/.env up -d",
+    "db-down": "docker-compose down",
+    "db-migrate": "npx prisma migrate dev",
+    "db-seed": "npx prisma db seed --preview-feature"
   },
   "repository": {
     "type": "git",
