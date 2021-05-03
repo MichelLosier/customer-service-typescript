@@ -42,7 +42,7 @@ These yarn commands wrap other CLI commands for convenience. The actual commands
 ## Tests
 
 - `yarn client-test` to run tests for the client app
-- `yarn server-start` to run run tests for the server app. Note: Make sure the database is up and seeded.
+- `yarn server-test` to run run tests for the server app. Note: Make sure the database is up and seeded.
 
 ## Use
 
@@ -51,5 +51,5 @@ The client app development server will run on `localhost:3000`.
 The server is available on `localhost:6001`.
 
 - A build of the client app will be served on `localhost:6001/`
-- A GraphiQL app to interact with the graphql API is served on `localhost:6001 graphql`.
+- A GraphiQL app to interact with the graphql API is served on `localhost:6001/graphql`.
   - The graphql schema and docs are available through the GraphiQL app.
