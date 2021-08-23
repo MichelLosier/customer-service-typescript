@@ -2,6 +2,7 @@
 
 ## About
 
+Practice App with Typescript
 This project includes both the service application and client app for retrieving customer information.
 
 - [Customer Service (server)](packages/server/README.md)
